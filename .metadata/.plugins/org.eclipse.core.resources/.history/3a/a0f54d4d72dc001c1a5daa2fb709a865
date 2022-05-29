@@ -1,0 +1,41 @@
+package application;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class DisplayingData {
+	public static ArrayList<String> foodNames;
+	public static ArrayList<String> seasons;
+	public static ArrayList<Integer> calories;
+	public static ArrayList<Integer> carbs;
+	public static ArrayList<Integer> fats;
+	public static ArrayList<Integer> protein;
+	public void start() throws SQLException, ClassNotFoundException
+	{
+		foodNames = new ArrayList<String>();
+		seasons = new ArrayList<String>();
+		calories = new ArrayList<Integer>();
+		carbs = new ArrayList<Integer>();
+		fats = new ArrayList<Integer>();
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3306/foodmenu";
+		String username = "admin";
+		String password = "test123";
+		Connection connection = DriverManager.getConnection(url, username, password);
+		Statement statement = connection.createStatement();
+		ResultSet rs =statement.executeQuery("SELECT * FROM foodmenu.food_table");
+		while(rs.next())
+		{
+			foodNames.add(rs.getString(1));
+			seasons.add(rs.getString(2));
+			calories.add(rs.getInt(3));
+			carbs.add(rs.getInt(4));
+			protein.add(rs.getInt(5));
+			fats.add(rs.getInt(6));
+		}
+	}
+}

@@ -1,0 +1,55 @@
+package application;
+
+public class Food {
+	public String name;
+	public String calories;
+	public String grams;
+	public int proteinAmount;
+	public int fatAmount;
+	public int carbsAmount;
+	static int currentCalories = 0;
+	public Food(int protein, int fat, int carbs)
+	{
+		this.proteinAmount = protein;
+		this.fatAmount = fat;
+		this.carbsAmount = carbs;
+	}
+	public Food()
+	{
+		
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public String getCalories()
+	{
+		return calories;
+	}
+	public String getGrams()
+	{
+		return grams;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public void setCaloris(String calories)
+	{
+		this.calories = name;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public Food(String name, String calories, String grams)
+	{
+		this.name = name;
+		this.calories = calories;
+		this.grams = grams;
+	}
+	public void addCalories(int amount)
+	{
+		currentCalories+= amount;
+	}
+}
